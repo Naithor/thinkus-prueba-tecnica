@@ -26,5 +26,5 @@ desktop.ini
 ### Logs ###
 *.log
 
-### Maven wrapper (optional, can regenerate) ###
-# .mvn/wrapper/maven-wrapper.jar
+### Maven ###
+.mvn/wrapper/maven-wrapper.jar
