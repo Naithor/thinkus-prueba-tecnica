@@ -1,0 +1,133 @@
+{
+  "info": {
+    "name": "ThinkUs Prueba Tecnica",
+    "description": "API para gestion de fondos de inversion - BTG Pactual",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "clientId",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Funds",
+      "item": [
+        {
+          "name": "List All Funds",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/funds",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "funds"]
+            },
+            "description": "Lista todos los fondos de inversion disponibles"
+          }
+        },
+        {
+          "name": "Subscribe to Fund",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientId\": \"{{clientId}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/funds/1/subscribe",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "funds", "1", "subscribe"]
+            },
+            "description": "Suscribirse a un fondo. Fondos disponibles: 1-5.\n\n1. FPV_BTG_PACTUAL_RECAUDADORA - $75.000\n2. FPV_BTG_PACTUAL_ECOPETROL - $125.000\n3. DEUDAPRIVADA - $50.000\n4. FDO-ACCIONES - $250.000\n5. FPV_BTG_PACTUAL_DINAMICA - $100.000"
+          }
+        },
+        {
+          "name": "Cancel Fund Subscription",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/funds/1/subscribe?clientId={{clientId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "funds", "1", "subscribe"],
+              "query": [
+                {
+                  "key": "clientId",
+                  "value": "{{clientId}}"
+                }
+              ]
+            },
+            "description": "Cancelar suscripcion a un fondo. El monto se retorna al cliente."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Clients",
+      "item": [
+        {
+          "name": "Get Transaction History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/clients/{{clientId}}/transactions",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "clients", "{{clientId}}", "transactions"]
+            },
+            "description": "Obtener historial de transacciones (aperturas y cancelaciones) de un cliente"
+          }
+        },
+        {
+          "name": "Update Notification Preferences",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"preference\": \"EMAIL\",\n  \"contactInfo\": \"cliente@email.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/clients/{{clientId}}/preferences",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "clients", "{{clientId}}", "preferences"]
+            },
+            "description": "Configurar preferencia de notificacion (EMAIL o SMS)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Swagger",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/swagger-ui.html",
+          "host": ["{{baseUrl}}"],
+          "path": ["swagger-ui.html"]
+        },
+        "description": "Abrir Swagger UI para documentacion interactiva de la API"
+      }
+    }
+  ]
+}

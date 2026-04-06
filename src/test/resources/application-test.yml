@@ -1,0 +1,11 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/btg_test
+  mail:
+    host: localhost
+    port: 1025
+    username: ""
+    password: ""
+
+de.flapdoodle.mongodb.embedded.version: 7.0.14

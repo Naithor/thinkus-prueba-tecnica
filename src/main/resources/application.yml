@@ -1,0 +1,28 @@
+spring:
+  mail:
+    host: localhost
+    port: 1025
+    username: ""
+    password: ""
+  retry:
+    max-attempts: 3
+    backoff:
+      delay: 100
+  application:
+    name: thinkus-prueba-tecnica
+  mongodb:
+    uri: mongodb://localhost:27017/btg_pactual
+
+server:
+  port: 8080
+
+logging:
+  level:
+    com.naithor.thinkuspruebatecnica: DEBUG
+    org.springframework.data.mongodb: DEBUG
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
